@@ -1,0 +1,16 @@
+---
+- name: Install and start Nginx
+  hosts: ubuntu
+  become: yes  # Execute tasks with root privilege
+
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present  # Ensure Nginx is installed
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started  # Start the Nginx service
+        enabled: yes    # Automatically start Nginx on server boot
